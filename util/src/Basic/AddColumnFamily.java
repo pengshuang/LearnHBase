@@ -1,5 +1,8 @@
+package Basic;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 import java.io.IOException;
@@ -7,18 +10,17 @@ import java.io.IOException;
 /**
  * Created by pengshuang on 16/10/24.
  */
-public class EnableTable {
+public class AddColumnFamily {
+
     public static void main(String[] args) throws IOException
     {
+
         Configuration conf = HBaseConfiguration.create();
         HBaseAdmin admin = new HBaseAdmin(conf);
+        HColumnDescriptor columnDescriptor = new HColumnDescriptor("contactDetails");
 
-        Boolean b = admin.isTableEnabled("temp");
-        System.out.println(b);
-        if (!b) {
-            admin.enableTable("temp");
-            System.out.println("Table enabled!");
-        }
+        admin.addColumn("temp", columnDescriptor);
+        System.out.print("coloumn added");
 
     }
 }
