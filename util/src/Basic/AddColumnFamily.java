@@ -17,7 +17,7 @@ public class AddColumnFamily {
 
         Configuration conf = HBaseConfiguration.create();
         HBaseAdmin admin = new HBaseAdmin(conf);
-        HColumnDescriptor columnDescriptor = new HColumnDescriptor("contactDetails");
+        HColumnDescriptor columnDescriptor = new HColumnDescriptor("qual1");
 
         admin.addColumn("temp", columnDescriptor);
         System.out.print("coloumn added");
